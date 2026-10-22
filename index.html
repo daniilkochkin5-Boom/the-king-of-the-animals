@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Пасхальная охота</title>
+<style>
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: #070b16;
+    font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  }
+  #wrap {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  canvas {
+    display: block;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .65);
+    touch-action: none;
+    cursor: pointer;
+  }
+  #touch {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: none; align-items: center; gap: 10px;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+    pointer-events: none;
+  }
+  @media (pointer: coarse) { #touch { display: flex; } }
+  .tbtn {
+    pointer-events: auto;
+    width: 62px; height: 62px; padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .32);
+    background: rgba(12, 22, 40, .5);
+    color: #fff; font-size: 24px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    user-select: none; -webkit-user-select: none;
+    backdrop-filter: blur(4px);
+    font-family: inherit;
+  }
+  .tbtn:active { background: rgba(255, 255, 255, .22); }
+  .spacer { flex: 1; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="game"></canvas></div>
+<div id="touch">
+  <button class="tbtn" data-act="teleL" aria-label="Перенос влево">&#8676;</button>
+  <div class="spacer"></div>
+  <button class="tbtn" data-act="left" aria-label="Влево">&#9664;</button>
+  <button class="tbtn" data-act="jump" aria-label="Прыжок">&#9650;</button>
+  <button class="tbtn" data-act="right" aria-label="Вправо">&#9654;</button>
+  <div class="spacer"></div>
+  <button class="tbtn" data-act="teleR" aria-label="Перенос вправо">&#8677;</button>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
